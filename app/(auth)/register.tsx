@@ -1,6 +1,7 @@
 import { RegisterForm } from '@/components/forms/RegisterForm';
 import { Colors } from '@/constants/colors';
 import { useAuth } from '@/hooks/useAuth';
+import { useAuthStore } from '@/stores/authStore';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
@@ -16,7 +17,6 @@ export default function RegisterScreen() {
             await register(data.username, data.email, data.password, data.role);
 
             // After successful sign in with better-auth, hydrate the global store
-            const { useAuthStore } = require('@/stores/authStore');
             await useAuthStore.getState().hydrateFromStorage();
 
             if (data.role === 'kabadiwalla') {

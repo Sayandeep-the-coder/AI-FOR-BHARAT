@@ -1,6 +1,7 @@
 import { LoginForm } from '@/components/forms/LoginForm';
 import { Colors } from '@/constants/colors';
 import { useAuth } from '@/hooks/useAuth';
+import { useAuthStore } from '@/stores/authStore';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
@@ -17,7 +18,6 @@ export default function LoginScreen() {
             await login(data.email, data.password);
 
             // After successful sign in with better-auth, hydrate the global store
-            const { useAuthStore } = require('@/stores/authStore');
             await useAuthStore.getState().hydrateFromStorage();
 
             // Route based on role

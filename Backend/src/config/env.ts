@@ -29,8 +29,8 @@ const envSchema = z.object({
     MAIL_USER: z.string(),
     MAIL_PASS: z.string(),
 
-    FRONTEND_URL: z.string().url(),
-    CORS_ORIGIN: z.string().url(),
+    FRONTEND_URL: z.string(),
+    CORS_ORIGIN: z.string(),
 
     GEMINI_API_KEY: z.string(),
 

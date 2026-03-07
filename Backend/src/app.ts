@@ -25,7 +25,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // Better Auth Handler
-app.all("/api/v1/auth/*path", toNodeHandler(auth));
+app.use("/api/auth", toNodeHandler(auth));
 
 // Body parser
 app.use(express.json({ limit: '10kb' }));
@@ -56,7 +56,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // API Routes
-app.use('/api/v1', routes);
+app.use('/api', routes);
 
 // Handle undefined routes
 app.all('*path', (req: Request, res: Response, next: NextFunction) => {

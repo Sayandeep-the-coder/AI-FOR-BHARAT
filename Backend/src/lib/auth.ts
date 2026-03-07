@@ -5,6 +5,7 @@ import { admin } from "better-auth/plugins";
 import { env } from "../config/env";
 import { UserModel } from "../models/user.model.js";
 
+import { dash } from "@better-auth/infra";
 import { MongoClient } from "mongodb";
 
 const client = new MongoClient(env.MONGO_URI, { family: 4 });
@@ -61,13 +62,15 @@ export const auth = betterAuth({
             adminRole: "admin",
         }),
         expo(),
+        dash(),
     ],
     trustedOrigins: [
         "ecowaste://",
         ...(env.NODE_ENV === "development" ? [
             "exp://",
             "exp://**",
-            "exp://192.168.*.*:*/**"
+            "exp://192.168.*.*:*/**",
+            "http://192.168.*.*:*"
         ] : [])
     ]
 });
