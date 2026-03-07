@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/colors';
+import { AppColors as Colors } from '@/constants/appColors';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
@@ -6,8 +6,8 @@ export default function CitizenLayout() {
     return (
         <Tabs screenOptions={{
             headerShown: false,
-            tabBarActiveTintColor: Colors.primary[600],
-            tabBarInactiveTintColor: Colors.neutral[400],
+            tabBarActiveTintColor: Colors.primary,
+            tabBarInactiveTintColor: Colors.textMuted,
             tabBarStyle: { backgroundColor: Colors.white, borderTopColor: Colors.border, paddingBottom: 4, height: 56 },
             tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
         }}>

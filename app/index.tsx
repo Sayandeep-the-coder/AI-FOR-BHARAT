@@ -1,4 +1,4 @@
-import { Colors } from '@/constants/colors';
+import { AppColors as Colors } from '@/constants/appColors';
 import { useAuthStore } from '@/stores/authStore';
 import { Redirect } from 'expo-router';
 import { ActivityIndicator, View } from 'react-native';

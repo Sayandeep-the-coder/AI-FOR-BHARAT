@@ -22,8 +22,8 @@ export const pickupService = {
     /**
      * Confirm a pickup with GPS and quality rating (kabadiwalla)
      */
-    async confirmPickup(id: string, payload: ConfirmPickupPayload): Promise<PickupRequest> {
-        const { data } = await api.post(`/api/pickups/confirm/${id}`, payload);
+    async confirmPickup(id: string, payload: any): Promise<PickupRequest> {
+        const { data } = await api.post(`/api/pickups/${id}/confirm`, payload);
         return data.data || data;
     },
 
@@ -31,7 +31,7 @@ export const pickupService = {
      * Rate a pickup (citizen)
      */
     async ratePickup(id: string, rating: number): Promise<PickupRequest> {
-        const { data } = await api.post(`/api/pickups/rate/${id}`, { rating });
+        const { data } = await api.post(`/api/pickups/${id}/rate`, { rating });
         return data.data || data;
     },
 
@@ -47,7 +47,7 @@ export const pickupService = {
      * Get nearby kabadiwallas for pickup request map
      */
     async getNearbyKabadiwallas(lat: number, lng: number): Promise<NearbyKabadiwalla[]> {
-        const { data } = await api.get('/api/kabadiwallas/nearby', {
+        const { data } = await api.get('/api/pickups/nearby-kabadiwallas', {
             params: { lat, lng },
         });
         return data.data || data;
@@ -57,7 +57,7 @@ export const pickupService = {
      * Get today's route (kabadiwalla)
      */
     async getTodayRoute(): Promise<PickupRequest[]> {
-        const { data } = await api.get('/api/pickups/route/today');
+        const { data } = await api.get('/api/pickups/kabadiwalla/route');
         return data.data || data;
     },
 
@@ -65,7 +65,7 @@ export const pickupService = {
      * Get nearby pending pickup requests (kabadiwalla)
      */
     async getNearbyRequests(lat: number, lng: number): Promise<PickupRequest[]> {
-        const { data } = await api.get('/api/pickups/nearby', {
+        const { data } = await api.get('/api/pickups/kabadiwalla/pending', {
             params: { lat, lng },
         });
         return data.data || data;
@@ -74,15 +74,16 @@ export const pickupService = {
     /**
      * Get pickup history (paginated)
      */
-    async getPickupHistory(page: number = 1, limit: number = 20): Promise<{
+    async getPickupHistory(role: 'citizen' | 'kabadiwalla', page: number = 1, limit: number = 20): Promise<{
         pickups: PickupRequest[];
         total: number;
         page: number;
         totalPages: number;
     }> {
-        const { data } = await api.get('/api/pickups/history', {
+        const endpoint = role === 'citizen' ? '/api/pickups/history/citizen' : '/api/pickups/history/kabadiwalla';
+        const { data } = await api.get(endpoint, {
             params: { page, limit },
         });
-        return data;
+        return data.data || data;
     },
 };

@@ -9,45 +9,27 @@ module.exports = {
         extend: {
             colors: {
                 primary: {
-                    50: '#f0fdf4',
-                    100: '#dcfce7',
-                    200: '#bbf7d0',
-                    300: '#86efac',
-                    400: '#4ade80',
-                    500: '#22c55e',
-                    600: '#16a34a',
-                    700: '#15803d',
-                    800: '#166534',
-                    900: '#14532d',
-                    950: '#052e16',
+                    DEFAULT: '#1B5E20',
+                    light: '#4CAF50',
+                    dark: '#0A3310',
                 },
-                secondary: {
-                    50: '#eff6ff',
-                    100: '#dbeafe',
-                    200: '#bfdbfe',
-                    300: '#93c5fd',
-                    400: '#60a5fa',
-                    500: '#3b82f6',
-                    600: '#2563eb',
-                    700: '#1d4ed8',
-                    800: '#1e40af',
-                    900: '#1e3a8a',
-                    950: '#172554',
+                accent: {
+                    DEFAULT: '#66BB6A',
+                },
+                background: {
+                    DEFAULT: '#F4FBF4',
+                },
+                dark: {
+                    DEFAULT: '#0D1B2A',
+                },
+                danger: {
+                    DEFAULT: '#E53935',
                 },
                 success: {
-                    light: '#dcfce7',
                     DEFAULT: '#22c55e',
-                    dark: '#15803d',
                 },
                 warning: {
-                    light: '#fef9c3',
                     DEFAULT: '#eab308',
-                    dark: '#a16207',
-                },
-                error: {
-                    light: '#fee2e2',
-                    DEFAULT: '#ef4444',
-                    dark: '#b91c1c',
                 },
                 neutral: {
                     50: '#fafafa',
@@ -63,10 +45,9 @@ module.exports = {
                 },
             },
             fontFamily: {
-                inter: ['Inter'],
-                'inter-bold': ['Inter-Bold'],
-                'inter-semibold': ['Inter-SemiBold'],
-                'inter-medium': ['Inter-Medium'],
+                poppins: ['Poppins_400Regular'],
+                'poppins-semibold': ['Poppins_600SemiBold'],
+                'poppins-bold': ['Poppins_700Bold'],
             },
         },
     },
